@@ -85,6 +85,10 @@ body {
     text-decoration: none;
     overflow: hidden;
 }
+.button:hover{
+    text-decoration: none;
+    color: #f8f8f2;
+}
 .button__hover {
     display: block;
     position: absolute;
@@ -101,6 +105,14 @@ body {
     color: #f8f8f2;
     font-size: 4.0em;
 }
+
+
+.proficiencies{
+    font-family: lato,sans-serif;
+    font-size: 18px;
+    color: #f8f8f2;
+}
+
 
 
 [tabindex="-1"]:focus {
