@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_content %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Daniel Skrobot</title>
+    <link href="{% static '/css/main.css'  %}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card card-body h-100  border-info" id="profile-wrapper">
+                    <img id="profile-pic" src="{% static 'img/dynio.jpg' %}">
+                    <hr>
+                    <h4>Hi I'm Daniel!</h4>
+                    <p>I love coding, and just coding... and C++ is my life.</p>
+                </div>
+            </div>
+
+            <div class="col-md-9">
+                <div class="card card-body h-100  border-info">
+                    <h4>About Me</h4>
+                    <hr>
+                    <p>I am a student at the Kielce University of technology, studying computer science. I am passionate
+                    about programming, and I am currently focusing on improving my skills concerning C++ programming
+                    language. In addition my goal is to develop towards creating computer games and artificial
+                    intelligence.</p>
+                    
+                    <ul class="social-links">
+                      <a href="https://github.com/DYNIO1999">  <li><img class="social" src="{% static 'img/git.png' %}"></li></a>
+                      <a href="https://www.linkedin.com/in/daniel-skrobot-8b49ab231/"> <li><img class="social" src="{% static 'img/linkedin.png' %}"></li></a>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-body h-100 border-info" id="profile-wrapper">
+                    <h5>My Experience as a Developer</h5>
+                    <hr>
+                    <p></p>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <br>
+    </div>
+
+
+</body>
+
+</html>
+{% endblock %}
