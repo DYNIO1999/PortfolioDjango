@@ -2,10 +2,16 @@
 {% load static %}
 
 {% block page_content %}
-<h1>{{ project.title }}</h1>
+
+<div class="title">
+            <hr>
+    <p style="font-size: 50px; font-weight: 700;">{{ project.title }}</p>
+            <hr>
+</div>
+
 <div class="row">
     <div class="col-md-8">
-        <img src="{% static project.image %}" alt="" width="100%">
+        <img src="{% static project.image %}" width="700px" height="600px">
     </div>
     <div class="col-md-4">
         <h5>About the project:</h5>
@@ -15,4 +21,10 @@
         <p>{{ project.technology }}</p>
     </div>
 </div>
+        <div class="title">
+                    <hr>
+            <p style="font-size: 50px; font-weight: 700;">Description</p>
+                            <hr>
+        </div>
+
 {% endblock %}

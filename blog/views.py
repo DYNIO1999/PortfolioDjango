@@ -1,12 +1,13 @@
 from django.shortcuts import render
 
 from blog.forms import CommentForm
-from blog.models import Post, Comment
+from blog.models import Category, Post, Comment
 
 
 def blog_index(request):
     posts = Post.objects.all().order_by("-created_on")
-    context = {"posts": posts}
+    category_list = Category.objects.all()
+    context = {"posts": posts, "categories": category_list}
     return render(request, "blog_index.html", context)
 
 
@@ -16,7 +17,6 @@ def blog_category(request, category):
     )
     context = {"category": category, "posts": posts}
     return render(request, "blog_category.html", context)
-
 
 def blog_detail(request, pk):
     post = Post.objects.get(pk=pk)
