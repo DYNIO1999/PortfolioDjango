@@ -112,6 +112,30 @@ body {
     font-size: 18px;
     color: #f8f8f2;
 }
+.proficiencies__row {
+    display: flex;
+    border-bottom: 1px solid rgba(68, 71, 90, .2);
+    padding: .6em 0;
+}
+.proficiencies__row__label {
+    padding: .1em 0;
+    font-weight: 700;
+    min-width: 240px;
+    color: #aeb0c7;
+}
+
+.tag{
+    
+    display: inline-block;
+    padding: .12em .6em;
+    margin: .1em;
+    border-radius: 2em;
+}
+ .tag,
+ .tags .tag--primary-1 {
+     background: linear-gradient(145deg, rgba(68, 71, 90, .2), rgba(68, 71, 90, .3), rgba(139, 233, 253, .12));
+     color: #8be9fd;
+ }
 
 
 
