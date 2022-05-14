@@ -9,9 +9,7 @@
 
 <head>
     <title>Daniel Skrobot</title>
-    <link href="{% static '/css/main.css'  %}" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="{% static '/css/bootstrap.css'  %}" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -36,11 +34,6 @@
                     about programming, and I am currently focusing on improving my skills concerning C++ programming
                     language. In addition my goal is to develop towards creating computer games and artificial
                     intelligence.</p>
-                    
-                    <ul class="social-links">
-                      <a href="https://github.com/DYNIO1999">  <li><img class="social" src="{% static 'img/git.png' %}"></li></a>
-                      <a href="https://www.linkedin.com/in/daniel-skrobot-8b49ab231/"> <li><img class="social" src="{% static 'img/linkedin.png' %}"></li></a>
-                    </ul>
 
                 </div>
             </div>
@@ -60,9 +53,46 @@
 
         <br>
     </div>
+    <div class="links_title"><h2>Links</h2></div>
+        <div class="links">
+        
+            <a href="https://github.com/DYNIO1999" rel="noopener" target="_blank" class="button">
+                <img src="{% static 'img/git.png' %}"> GitHub
+                <span class="button__hover" style="opacity: 0; left: -19.6px; top: -35.75px;"></span></a><a
+            href="https://www.linkedin.com/in/daniel-skrobot-8b49ab231/" rel="noopener" target="_blank" class="button">
+                <img src="{% static 'img/linkedin.png' %}"> LinkedIn
+                <span class="button__hover" style="opacity: 0; left: -260.6px; top: -21.75px;"></span></a>
+            <script>
+                document.addEventListener('DOMContentLoaded', event => {
+                    document.addEventListener('mousemove', event => {
+                        if (event.target.classList == null || !event.target.classList.contains('button')) return;
 
+                        const rect = event.target.getBoundingClientRect();
+                        const mouseX = event.clientX - rect.left;
+                        const mouseY = event.clientY - rect.top;
 
+                        const hoverSpan = event.target.querySelector('.button__hover');
+                        hoverSpan.style.opacity = '1.0';
+                        hoverSpan.style.left = `${mouseX - (hoverSpan.offsetWidth / 2)}px`;
+                        hoverSpan.style.top = `${mouseY - (hoverSpan.offsetHeight / 2)}px`;
+                    });
+
+                    const buttons = document.getElementsByClassName('button');
+                    const hoverSpan = document.createElement('span');
+                    hoverSpan.classList.add('button__hover');
+
+                    for (var i = 0; i < buttons.length; i++) {
+                        buttons[i].appendChild(hoverSpan.cloneNode());
+                        buttons[i].addEventListener('mouseleave', event => {
+                            event.target.style.background = null;
+
+                            const hoverSpan = event.target.querySelector('.button__hover');
+                            hoverSpan.style.opacity = '0.0';
+                        });
+                    }
+                });
+            </script>
+        </div>
 </body>
-
 </html>
 {% endblock %}

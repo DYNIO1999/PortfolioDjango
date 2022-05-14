@@ -1,6 +1,8 @@
-body {
-    background-color: #000000 !important;
-    color:red;
+.body {
+    background-color: #252530 !important;
+    color:rgb(87, 144, 165);
+    font-family: lato, sans-serif;
+    font-size: 18px;
 }
 
 #profile-wrapper {
@@ -31,7 +33,20 @@ li {
     width: 20px;
     height: 20px;
 }
-{
-    color:red;
+
+
+.links {
+    flex: 1;
+}
+
+.button {
+    position: relative;
+    display: inline-block;
+    padding: 1em;
+    margin: .2em;
+    background: rgba(68, 71, 90, .3);
+    color: #f8f8f2;
+    font-weight: 700;
     text-decoration: none;
+    overflow: hidden;
 }
