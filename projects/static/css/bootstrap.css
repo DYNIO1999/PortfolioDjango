@@ -72,6 +72,15 @@ body {
     background-color: #252530
 }
 
+
+.checked{
+    color: orange;
+}
+
+.my-btn{
+    background-color: inherit !important;
+    border: 0 !important;
+}
 .personal_info{
         display: flex;
         padding: .6em 0;
@@ -83,8 +92,8 @@ body {
 
 .links{
     width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 10px;
+    padding-left: 10px;
     margin-right: auto;
     margin-left: auto;
     flex: 1;
@@ -95,8 +104,8 @@ body {
     padding: 1em;
     padding-right: 10em;
     padding-left: 10em;
-    padding-bottom: 0.5em;
-    margin: 2.0em;
+    padding-bottom: 0.2em;
+    margin: 1.0em;
     background: rgba(68, 71, 90, .3);
     color: #f8f8f2;
     font-weight: 700;

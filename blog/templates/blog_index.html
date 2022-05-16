@@ -6,25 +6,45 @@
     {% for category in categories %}
     <div>
         {{category.name}}
-    </div>    
+    </div>
     {% endfor %}
 </div>
 
 <div class="col-md-8 offset-md-2">
     <h1>DBlog</h1>
+    Szukaj: <input type="text" id="search" />
     <hr>
     {% for post in posts %}
-    <h2><a href="{% url 'blog_detail' post.pk%}">{{ post.title }}</a></h2>
-    <small>
-        {{ post.created_on.date }} |&nbsp;
-        Categories:&nbsp;
-        {% for category in post.categories.all %}
-        <a href="{% url 'blog_category' category.name %}">
-            {{ category.name }}
-        </a>&nbsp;
-        {% endfor %}
-    </small>
-    <p>{{ post.body | slice:":400" }}...</p>
+    <div data-title="{{post.title}}" data-category class="post">
+        <h2><a href="{% url 'blog_detail' post.pk%}">{{ post.title }}</a></h2>
+        <small>
+            {{ post.created_on.date }} |&nbsp;
+            Categories:&nbsp;
+            {% for category in post.categories.all %}
+            <a href="{% url 'blog_category' category.name %}">
+                {{ category.name }}
+            </a>&nbsp;
+            {% endfor %}
+        </small>
+        <p>{{ post.body | slice:":400" }}...</p>
+    </div>
     {% endfor %}
+    <script>
+        document.querySelector('#search').addEventListener('change', (event) => {
+            const searchText = event.target.value
+            const posts = document.querySelectorAll('.post')
+
+            posts.forEach((post) => {
+                if (post.dataset.title.toUpperCase().includes(searchText.toUpperCase())) {
+                    post.style.display = 'block'
+                } else {
+                    post.style.display = 'none'
+                }
+            })
+        })
+
+        document.queryS
+
+    </script>
 </div>
 {% endblock %}
