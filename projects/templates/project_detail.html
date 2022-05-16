@@ -38,145 +38,64 @@
         <hr>
         </div>
         
-        <div class="rating">
+    <div id = "side-left">
+        <div id="confirm-box"></div>
         <form class="rate-form" action="" method="POST" id="{{project.id}}">
-            {% csrf_token %}
-            <button type="submit" class="fa fa-star fa-3x my-btn " id="first"></button>
-            <button type="submit" class="fa fa-star fa-3x my-btn " id="second"></button>
-            <button type="submit" class="fa fa-star fa-3x my-btn " id="third"></button>
-            <button type="submit" class="fa fa-star fa-3x my-btn" id="fourth"></button>
-            <button type="submit" class="fa fa-star fa-3x my-btn" id="fifth"></button>
+            <span class="star-rating">
+                {% csrf_token %}
+
+
+            
+            <input type="radio" id="star1" name="rate" value="1"/><i></i>
+            <input type="radio" id="star2" name="rate" value="2" /><i></i>
+            <input type="radio" id="star3" name="rate" value="3" /><i></i>
+            <input type="radio" id="star4" name="rate" value="4" /><i></i>
+            <input type="radio" id="star5" name="rate" value="5" /><i></i>
+            </span>
         </form>
-        <div id = "confirm-box"></div>
-        </div>
-        <button class="btn btn-primary" id="but">Confirm</button>
-    
+        <button class="btn btn-primary" id="but" onclick="submitRate()">Confirm</button>
+    </div>
+    <div id="side-right">
+        123
+    </div>
     
     <script>
+    const check =false
 
-    const one = document.getElementById('first')
-    const two = document.getElementById('second')
-    const three = document.getElementById('third')
-    const four = document.getElementById('fourth')
-    const five = document.getElementById('fifth')
-
-
-    const form = document.querySelector('.rate-form')
-    const confirmBox = document.getElementById('confirm-box')
-    const csrf = document.getElementsByName('csrfmiddlewaretoken')
-
-
-    // get the element
-    const element = document.getElementById('but')
-
-    // always checking if the element is clicked, if so, do alert('hello')
-    element.addEventListener("click", () => {
-        alert('hello');
-    });
-    const arr = [one, two, three, four, five]
-
-    const handleStarSelect = (size) => {
-            const children = form.children
-            console.log(children[0])
-            for (let i = 0; i < children.length; i++) {
-                if (i <= size) {
-                    children[i].classList.add('checked')
-                } else {
-                    children[i].classList.remove('checked')
+    function insertData(val) {
+            const form = document.querySelector('.rate-form')
+            const csrf = document.getElementsByName('csrfmiddlewaretoken')
+            const confirmBox = document.getElementById('confirm-box')
+            const id = Number(form.id)
+            const val_num = Number(val)
+            $.ajax({
+                type: 'POST',
+                url: '/rate/',
+                data: {
+                    'csrfmiddlewaretoken': csrf[0].value,
+                    'el_id': id,
+                    'val': val_num,
+                },
+                success: function (response) {
+                    console.log(response)
+                    confirmBox.innerHTML = `<h1>Successfully rated with ${response.score}</h1>`
+                },
+                error: function (error) {
+                    console.log(error)
+                    confirmBox.innerHTML = '<h1>Ups... something went wrong</h1>'
                 }
-            }
-        }
+            })
+             setTimeout(function () {
+                       window.location.reload(true);
+              }, 1000);
+      
 
-
-
-    arr.forEach(item => item.addEventListener('mouseover', (event) => {
-        handleSelect(event.target.id)
-    }))
-
-
-
-    const getNumericValue = (stringValue) => {
-            let numericValue;
-            if (stringValue === 'first') {
-                numericValue = 1
-            }
-            else if (stringValue === 'second') {
-                numericValue = 2
-            }
-            else if (stringValue === 'third') {
-                numericValue = 3
-            }
-            else if (stringValue === 'fourth') {
-                numericValue = 4
-            }
-            else if (stringValue === 'fifth') {
-                numericValue = 5
-            }
-            else {
-                numericValue = 0
-            }
-            return numericValue
-        }
-
-    const handleSelect = (selection) => {
-        switch (selection) {
-            case 'first':
-                handleStarSelect(1)
-                break;
-            case 'second':
-                handleStarSelect(2)
-                break;
-            case 'third':
-                handleStarSelect(3)
-                break;
-            case 'fourth':
-                handleStarSelect(4)
-                break;
-
-            case 'fifth':
-                handleStarSelect(5)
-                break;
-
-            default:
-                handleStarSelect(0)
-                break;
-        }
     }
 
-            arr.forEach(item => item.addEventListener('click', (event) => {
-                    const val  = event.target.id
-                    let isSubmit = false
-                form.addEventListener('submit', e => {
-                    e.preventDefault()
-                    if (isSubmit) {
-                        return
-                    }
-                    isSubmit = true
 
-                    const id =  e.target.id
-
-                    const val_num = getNumericValue(val)
-
-                    $.ajax({
-                        type: 'POST',
-                        url: '/rate/',
-                        data: {
-                            'csrfmiddlewaretoken': csrf[0].value,
-                            'el_id': id,
-                            'val': val_num,
-                        },
-                        success: function (response) {
-                            console.log(response)
-                            confirmBox.innerHTML = `<h1>Successfully rated with ${response.score}</h1>`
-                        },
-                        error: function (error) {
-                            console.log(error)
-                            confirmBox.innerHTML = '<h1>Ups... something went wrong</h1>'
-                        }
-                    })
-                })
-
-        }))
-
+    function submitRate(){
+            var score = document.querySelector("input[name = rate]:checked").value
+            insertData(score)       
+    }
     </script>
 {% endblock %}

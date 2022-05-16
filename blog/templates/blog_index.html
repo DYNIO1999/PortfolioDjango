@@ -29,10 +29,13 @@
         <p>{{ post.body | slice:":400" }}...</p>
     </div>
     {% endfor %}
+
     <script>
         document.querySelector('#search').addEventListener('change', (event) => {
             const searchText = event.target.value
             const posts = document.querySelectorAll('.post')
+
+            document.getElementById("empty-to-hide").style.visibility = "visible";
 
             posts.forEach((post) => {
                 if (post.dataset.title.toUpperCase().includes(searchText.toUpperCase())) {
@@ -46,5 +49,11 @@
         document.queryS
 
     </script>
+<div id="empty-to-hide" style="visibility: hidden !important; ">
+<div id="empty-div">
+</div>
+<div id="empty-div">
+</div>
+</div>
 </div>
 {% endblock %}
