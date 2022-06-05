@@ -15,7 +15,7 @@ def project_index(request):
 def project_detail(request, pk):
 
     project = Project.objects.get(pk=pk)
-
+    
     context = {
 
         'project': project
@@ -33,9 +33,12 @@ def rate_project(request):
     if request.method == 'POST':
         el_id = request.POST.get('el_id')
         val = request.POST.get('val')
-        print(val)
+        copy = val
         obj = Project.objects.get(id=el_id)
-        obj.score = val
+        obj.score =  obj.score + int(copy)
+        obj.counter =  obj.counter+1
+        obj.avg =  float(obj.score)/float(obj.counter)
         obj.save()
+        
         return JsonResponse({'success':'true', 'score': val}, safe=False)
     return JsonResponse({'success':'false'})

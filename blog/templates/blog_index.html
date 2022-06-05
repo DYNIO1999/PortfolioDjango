@@ -1,18 +1,25 @@
 {% extends "base.html" %}
 {% load static %}
 {% block page_content %}
-<div>
-    CATEGORIES:
-    {% for category in categories %}
-    <div>
-        {{category.name}}
-    </div>
-    {% endfor %}
-</div>
 
+<div class="col-sm-4">
+    <div class="single category">
+        <h3 class="side-title">Categories</h3>
+        <ul>
+            {% for post in posts %}
+                {% for category in post.categories.all %}
+                <li class="lis"><a href="{% url 'blog_category' category.name %}">
+                    {{ category.name }}
+                </a>
+                </li>
+                {% endfor %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 <div class="col-md-8 offset-md-2">
     <h1>DBlog</h1>
-    Szukaj: <input type="text" id="search" />
+    Search: <input type="text" id="search" />
     <hr>
     {% for post in posts %}
     <div data-title="{{post.title}}" data-category class="post">
@@ -56,4 +63,6 @@
 </div>
 </div>
 </div>
+
+
 {% endblock %}
