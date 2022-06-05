@@ -183,7 +183,7 @@ ul {
 
 #side-left {
     float: left;
-    width: 50%;
+    width: 47%;
 }
 #side-right{
     float: left;
@@ -1283,7 +1283,7 @@ pre code {
     .col-sm-4 {
         -ms-flex: 0 0 33.333333%;
         flex: 0 0 33.333333%;
-        max-width: 33.333333%
+        max-width:  1%
     }
 
     .col-sm-5 {
@@ -1519,7 +1519,8 @@ pre code {
     .col-md-8 {
         -ms-flex: 0 0 66.666667%;
         flex: 0 0 66.666667%;
-        max-width: 66.666667%
+        max-width: 66.666667%;
+        padding: 5% 0% 0% 5%;
     }
 
     .col-md-9 {

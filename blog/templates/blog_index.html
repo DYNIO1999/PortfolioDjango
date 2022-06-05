@@ -2,9 +2,9 @@
 {% load static %}
 {% block page_content %}
 
-<div class="col-sm-4">
+<div class="col-sm-4" style="float: left;">
     <div class="single category">
-        <h3 class="side-title">Categories</h3>
+        <h3 class="side-title" style="font-weight: 700; ">Categories</h3>
         <ul>
             {% for post in posts %}
                 {% for category in post.categories.all %}
